@@ -1,0 +1,74 @@
+{
+  "schema_version": "PeerReviewReport/v1",
+  "draft_path": "docs/drafts/paper-2026-05-19-multimodal-healnet.md",
+  "draft_genre": "prediction-model-paper",
+  "thesis_in_one_sentence": "Fusão multimodal HEALNet com modality dropout supera os melhores baselines unimodais em coorte multi-institucional de câncer de mama quando ≥60% das modalidades estão presentes.",
+  "recommendation": "major",
+  "executive_summary": "O draft propõe uma contribuição interessante (modality dropout aplicado a HEALNet) e apresenta a coorte com clareza. Três issues bloqueiam aceitação: ausência de calibração reportada, falta de teste em coorte externa apesar de TCGA + CPTAC estarem disponíveis, e claim sobre 'robustez' em § Discussion sem suporte empírico. Recomendado endereçar antes de submeter.",
+  "strengths": [
+    {
+      "section": "Methods § Population",
+      "point": "Definição operacional dos critérios de inclusão/exclusão é completa e replicável; cita as DUAs das duas coortes."
+    },
+    {
+      "section": "Methods § Statistical analysis",
+      "point": "Splits GroupKFold por paciente bem justificados — anti-leakage explícito é um diferencial relevante neste subcampo."
+    },
+    {
+      "section": "Introduction",
+      "point": "Gap metodológico ancorado em 4 papers do acervo com PICOT explícita — leitor entende em 2 parágrafos o que o trabalho propõe."
+    }
+  ],
+  "critical_weaknesses": [
+    {
+      "section": "Results",
+      "point": "Calibração ausente. A claim primária é 'modelos multimodais superam unimodais em AUROC' sem ECE/Brier reportados, mas o protocol.md lista ECE como métrica secundária obrigatória.",
+      "fix": "Adicionar tabela com ECE e Brier por modelo (uni vs multi) com IC 95% bootstrap. Discutir trade-off discriminação × calibração."
+    },
+    {
+      "section": "Methods § Evaluation",
+      "point": "Sem validação externa cross-cohort apesar de ter TCGA e CPTAC como coortes independentes. Resultado fica vulnerável a 'site shortcut'.",
+      "fix": "Treinar em TCGA, testar em CPTAC (e vice-versa). Reportar delta-AUROC vs split intra-coorte."
+    },
+    {
+      "section": "Discussion",
+      "point": "Claim 'modelo robusto a missing modality' sem ablation. 'Robusto' aqui é superlativo sem definição operacional.",
+      "fix": "Adicionar ablation com 20%/40%/60%/80% de missing por modalidade. Definir robusto operacionalmente (queda <X pts AUROC sob Y% missing)."
+    }
+  ],
+  "minor_weaknesses": [
+    {
+      "section": "Introduction",
+      "point": "Parágrafo 3 lista 6 papers correlatos em sequência. Difícil para o leitor extrair contribuição de cada.",
+      "fix": "Quebrar em 2 parágrafos por sub-tópico (early fusion vs late fusion) ou converter em tabela comparativa."
+    },
+    {
+      "section": "Methods § Model architecture",
+      "point": "Figura 1 (arquitetura) não tem callout no texto. Leitor pode não acessar.",
+      "fix": "Adicionar referência explícita (Fig. 1) em § Model architecture parágrafo 1."
+    }
+  ],
+  "claims_without_evidence": [
+    {
+      "section": "Abstract",
+      "claim": "'mais interpretável que baselines'",
+      "where_to_find_evidence_or_remove": "Não há análise de interpretabilidade no draft. Remover do abstract ou adicionar SHAP/attention analysis em Results."
+    },
+    {
+      "section": "Discussion §2",
+      "claim": "'consistente com a literatura'",
+      "where_to_find_evidence_or_remove": "Não cita qual literatura. Adicionar [[@boehm2025multimodal]] [[@chen2023fusion]] ou suavizar."
+    }
+  ],
+  "suggestions_by_section": [
+    {
+      "section": "Methods § Training",
+      "suggestion": "Reportar hiperparâmetros completos em tabela suplementar (LR, batch, epochs, scheduler). Como está agora, fica difícil de replicar."
+    },
+    {
+      "section": "Results",
+      "suggestion": "Considerar gráfico de Forest plot para AUROC por subgrupo (idade, etnia, estágio) — adequado para TRIPOD+AI."
+    }
+  ],
+  "mental_model_applied": "TRIPOD+AI"
+}
