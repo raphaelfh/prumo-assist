@@ -17,7 +17,7 @@ def test_extract_missing_refs_empty() -> None:
 
 
 def test_write_output_reports_citations_in_both_flavors(tmp_path: Path) -> None:
-    content = "Intro [@smith2024breast] e legado [[@jones2023fusion]] e narrativa @lee2025core.\n"
+    content = "Intro [@smith2024breast] e bracketed [@jones2023fusion] e narrativa @lee2025core.\n"
     result = write_output(
         content=content,
         pj_path=tmp_path,
