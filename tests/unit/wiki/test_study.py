@@ -19,17 +19,10 @@ def _bootstrap(tmp_path: Path) -> Path:
     return pj
 
 
-def test_session_log_path_extended_wiki(tmp_path: Path) -> None:
-    pj = _bootstrap(tmp_path)
-    (pj / "docs" / "wiki").mkdir()
-    out = session_log_path(pj, "conformal", "2026-05-03")
-    assert out == pj / "docs" / "wiki" / "study-sessions" / "conformal-2026-05-03.md"
-
-
-def test_session_log_path_fallback(tmp_path: Path) -> None:
-    pj = _bootstrap(tmp_path)
-    out = session_log_path(pj, "conformal", "2026-05-03")
-    assert out == pj / "docs" / "study-sessions" / "conformal-2026-05-03.md"
+def test_session_log_path_no_escopo(tmp_path: Path) -> None:
+    scope = _bootstrap(tmp_path)
+    out = session_log_path(scope, "conformal", "2026-05-03")
+    assert out == scope / "notes" / "session-conformal-2026-05-03.md"
 
 
 def test_create_session_log_writes_yaml_frontmatter(tmp_path: Path) -> None:
