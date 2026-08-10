@@ -1,6 +1,6 @@
 {
   "schema_version": "PeerReviewReport/v1",
-  "draft_path": "docs/drafts/paper-2026-05-19-multimodal-healnet.md",
+  "draft_path": "docs/studies/principal/writing/paper-2026-05-19-multimodal-healnet.md",
   "draft_genre": "prediction-model-paper",
   "thesis_in_one_sentence": "Fusão multimodal HEALNet com modality dropout supera os melhores baselines unimodais em coorte multi-institucional de câncer de mama quando ≥60% das modalidades estão presentes.",
   "recommendation": "major",
