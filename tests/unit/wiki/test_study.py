@@ -31,7 +31,7 @@ def test_create_session_log_writes_yaml_frontmatter(tmp_path: Path) -> None:
         scope=pj,
         topic="conformal",
         date="2026-05-03",
-        sources_consulted=["[@vovk2005algorithmic]", "[[concepts/conformal]]"],
+        sources_consulted=["[@vovk2005algorithmic]", "[[conformal-prediction]]"],
     )
     assert out.exists()
     text = out.read_text()
@@ -100,10 +100,10 @@ def test_finalize_session_updates_yaml(tmp_path: Path) -> None:
         duration_minutes=18,
         status="completed",
         references_missing=["split-conformal multi-class"],
-        finding_archived=Path("docs/findings/x.md"),
+        finding_archived=Path("docs/studies/principal/notes/x.md"),
     )
     text = log_path.read_text()
     assert "duration_minutes: 18" in text
     assert "status: completed" in text
     assert "split-conformal multi-class" in text
-    assert "docs/findings/x.md" in text
+    assert "docs/studies/principal/notes/x.md" in text
