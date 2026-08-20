@@ -57,7 +57,7 @@ def test_archive_creates_finding_with_frontmatter(tmp_path: Path) -> None:
         slug="conformal-prediction-mnar",
         title="Conformal prediction sob MNAR",
         body="Sintetiza que exchangeability quebra; IPW corrige.",
-        sources=["[@vovk2005algorithmic]", "[[concepts/conformal]]"],
+        sources=["[@vovk2005algorithmic]", "[[conformal-prediction]]"],
         date="2026-05-03",
     )
     assert out.exists()
