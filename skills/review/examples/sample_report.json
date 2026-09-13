@@ -74,7 +74,30 @@
     }
   ],
   "mental_model_applied": "TRIPOD+AI",
+  "citation_checks": [
+    {
+      "citekey": "boehm2025multimodal",
+      "section": "Introduction",
+      "quote": "fusão multimodal supera modelos unimodais em oncologia",
+      "verdict": "partial",
+      "evidence_level": "fulltext",
+      "source_quote": "multimodal models outperformed unimodal baselines in 4 of 7 tasks",
+      "justification": "A fonte mostra ganho em 4 de 7 tarefas; o draft generaliza para todas."
+    },
+    {
+      "citekey": "chen2023fusion",
+      "section": "Methods § Model architecture",
+      "quote": "late fusion como na arquitetura de referência",
+      "verdict": "supports",
+      "evidence_level": "extract",
+      "source_quote": null,
+      "justification": "O extract descreve late fusion com o mesmo desenho, com locator na p.4."
+    }
+  ],
   "sources_read": [
-    "docs/studies/principal/protocol.md"
+    "docs/studies/principal/protocol.md",
+    "docs/references/papers/boehm2025multimodal/_extract.md",
+    "docs/references/pdfs/boehm2025multimodal.pdf",
+    "docs/references/papers/chen2023fusion/_extract.md"
   ]
 }
